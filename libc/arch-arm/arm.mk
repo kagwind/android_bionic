@@ -12,6 +12,7 @@ libc_bionic_src_files_arm := \
     bionic/mmap.cpp
 
 libc_common_src_files_arm += \
+    bionic/memchr.c \
     bionic/memrchr.c \
     bionic/strchr.cpp \
     bionic/strnlen.c \
