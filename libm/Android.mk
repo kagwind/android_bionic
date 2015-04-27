@@ -119,8 +119,6 @@ libm_common_src_files += \
     upstream-freebsd/lib/msun/src/s_exp2f.c \
     upstream-freebsd/lib/msun/src/s_expm1.c \
     upstream-freebsd/lib/msun/src/s_expm1f.c \
-    upstream-freebsd/lib/msun/src/s_fabs.c \
-    upstream-freebsd/lib/msun/src/s_fabsf.c \
     upstream-freebsd/lib/msun/src/s_fdim.c \
     upstream-freebsd/lib/msun/src/s_finite.c \
     upstream-freebsd/lib/msun/src/s_finitef.c \
@@ -267,7 +265,9 @@ ifeq ($(TARGET_USE_QCOM_BIONIC_OPTIMIZATION),true)
     arm/s_cos.S \
     arm/s_sin.S \
     arm/e_sqrtf.S \
-    arm/e_sqrt.S
+    arm/e_sqrt.S \
+    arm/fabs.S \
+    arm/fabsf.S
   libm_arm_cflags += -DQCOM_NEON_OPTIMIZATION -fno-if-conversion
   libm_arm_includes += $(LOCAL_PATH)/../libc/
 
@@ -276,7 +276,8 @@ ifeq ($(TARGET_USE_QCOM_BIONIC_OPTIMIZATION),true)
     upstream-freebsd/lib/msun/src/s_cos.c \
     upstream-freebsd/lib/msun/src/s_sin.c \
     upstream-freebsd/lib/msun/src/e_sqrtf.c \
-    upstream-freebsd/lib/msun/src/e_sqrt.c
+    upstream-freebsd/lib/msun/src/e_sqrt.c \
+    arm64/fabs.S
 
   libm_arm64_cflags += -DQCOM_NEON_OPTIMIZATION
   libm_arm64_includes += $(LOCAL_PATH)/../libc/
@@ -285,7 +286,9 @@ else
     upstream-freebsd/lib/msun/src/s_cos.c \
     upstream-freebsd/lib/msun/src/s_sin.c \
     upstream-freebsd/lib/msun/src/e_sqrtf.c \
-    upstream-freebsd/lib/msun/src/e_sqrt.c
+    upstream-freebsd/lib/msun/src/e_sqrt.c \
+    upstream-freebsd/lib/msun/src/s_fabs.c \
+    upstream-freebsd/lib/msun/src/s_fabsf.c
 endif
 
 #
